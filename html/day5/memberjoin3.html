@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://kit.fontawesome.com/c688b8b455.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      /* outline: 1px solid #333; */
+      box-sizing: border-box;
+      font: inherit;
+      margin: 0;
+    }
+    
+    /* 공통 */
+    .btn {
+      background-color: rgb(45, 32, 136);
+      color: #fff;
+      border-radius: 7px;
+      border: none;
+      outline: none;
+      font-weight: bold;
+    }
+
+    /* 전체 */
+    .wrap {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* 회원가입 부문 */
+    .wrap .member_join_wrap {
+      width: 700px;
+    }
+
+    /* 회원가입 타이릍 */
+    .wrap .member_join_wrap .title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      letter-spacing: .2rem;
+    }
+    .wrap .member_join_wrap .title h2 {
+      box-shadow: 5px 5px 5px 5px rgb(52, 45, 92);
+      font-family: 'Gamja Flower', sans-serif;
+      font-weight: 800;
+    }
+
+    /* outline */
+    .wrap .member_join_wrap .join_frm > div {
+      border:1px solid #333;
+      padding: 0 5px;
+      background-color: #fff;
+    }
+    .wrap .member_join_wrap .join_frm > div > label:first-child {
+      letter-spacing: .3rem;
+    }
+
+    /* 회원가입 양식 */
+    .wrap .member_join_wrap .member_join .join_frm {
+      display: grid;
+      grid-template-columns: 100px auto;
+      grid-template-rows: repeat(11, auto);
+      gap:2px;
+      background-color: rgb(124, 174, 218);
+      font-family: 'Nanum Myeongjo', serif;
+      font-weight: 700;
+    }
+
+    /* 회원가입 버튼그룹 */
+    .wrap .member_join_wrap .join_frm .btn_grp {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      grid-row: 11/12;
+      grid-column: 1/3;
+      border: none;
+      padding-top: 5px;
+    }
+    .wrap .member_join_wrap .join_frm .btn_grp input:not(:last-child) {
+      margin-right: 5px;
+    }
+    /* .wrap .member_join_wrap .join_frm .btn_grp input[type="button"] {
+      margin-right: 5px;
+    } */
+
+    /* font awesome */
+    .fa-regular.fa-envelope {
+      color: rgb(30, 5, 168);
+      font-weight: 400;
+      font-size: 1.2rem;
+    }
+    .fa-solid.fa-mobile-screen-button {
+      color: rgb(30, 5, 168);
+      font-size: 1.5rem;
+    }
+    .btn .fa-solid.fa-mobile-screen-button {
+      color: #fff;
+    }
+
+    /* banner img */
+    .wrap .banner {
+      background-image: url("https://pixabay.com/photos/coffee-drink-coffee-beans-roasted-7897414/");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+
+      background-color: tomato;
+      width: 700px;
+      height: 150px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="member_join_wrap">
+      <div class="banner"></div>
+      <div class="title">
+        <h2>회원가입</h2>
+      </div>
+      <div class="member_join">
+        <form action="" class="join_frm">
+          <div>
+            <label for="id">아이디</label>
+          </div>
+          <div>
+            <input type="text" id="id"> 
+            <input type="button" value="중복확인" class="btn">
+          </div>
+          <div>
+            <label for="name">이름</label>
+          </div>
+          <div>
+            <input type="text" id="name">
+          </div>
+          <div>
+            <label for="gender">성별</label>
+          </div>
+          <div>
+            <input type="radio" name="gender" id="">남자
+            <input type="radio" name="gender" id="">여자
+          </div>
+          <div>
+            <label for="password">암호</label>
+          </div>
+          <div>
+            <input type="password" id="password">
+          </div>
+          <div>
+            <label for="pwcheck">암호확인</label>
+          </div>
+          <div>
+            <input type="password" id="pwcheck">
+            <span>* 같은 암호를 입력하세요</span>
+          </div>
+          <div>
+            <label for="mail">이메일</label>
+          </div>
+          <div>
+            <input type="text" id="mail">@<input type="text">
+            <select name="" id="">
+              <option value="">naver.com</option>
+              <option value="" selected>gmail.com</option>
+              <option value="">hotmail.com</option>
+            </select>
+            <i class="fa-regular fa-envelope"></i>
+          </div>
+          <div>
+            <label for="">주소</label>
+          </div>
+          <div>
+            <input type="text">
+            <input type="button" value="주소찾기"  class="btn">
+          </div>
+          <div>
+            <label for="mobile">휴대폰</label>
+          </div>
+          <div>
+            <div>
+              <input type="radio" name="mobile"><label for="">SKT</label>
+              <input type="radio" name="mobile"><label for="">KT</label>
+              <input type="radio" name="mobile"><label for="">LGU+</label>
+            </div>
+            <select name="" id="">
+              <option value="">010</option>
+              <option value="">011</option>
+              <option value="" selected>012</option>
+            </select>
+              <input type="text">-<input type="text">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+          </div>
+          <div>
+            <label for="">관심</label>
+          </div>
+          <div>
+            <input type="checkbox"><label for="">쇼핑</label>
+            <input type="checkbox"><label for="">게임</label>
+            <input type="checkbox"><label for="">여행</label>
+            <input type="checkbox"><label for="">기타</label>
+          </div>
+          <div>
+            <label for="intro">자기소개</label>
+          </div>
+          <div>
+            <textarea style="width:100%; height:100px;" id="intro"></textarea>
+          </div>
+          <div class="btn_grp">
+            <input type="button" value="확인" class="btn">
+            <input type="reset" value="다시입력" class="btn">
+            <button class="btn"><i class="fa-solid fa-mobile-screen-button"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

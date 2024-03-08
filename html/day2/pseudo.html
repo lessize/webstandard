@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* pseudo-elements */
+        /* element가 없는데 있는 것처럼 사용 */
+        span::before {
+            display: block;
+            width: 50px;
+            height: 5px;
+            content: " ";
+            background-color: tomato;
+        }
+        span::after {
+            display: block;
+            width: 50px;
+            height: 5px;
+            content: " ";
+            background-color: darkcyan;
+        }
+
+        /* pseudo-class */
+        /* element에 class 값이 없는데 있는 것처럼 사용 */
+        span:hover {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <span>10.000</span>
+    <span>10.000</span>
+    <span>10.000</span>
+    <span>10.000</span>
+</body>
+</html>

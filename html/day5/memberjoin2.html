@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      outline: 1px solid #333;
+      box-sizing: border-box;
+    }
+
+    /* 전체 */
+    .wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* 회원가입 부문 */
+    .wrap .member_join_wrap {
+      width: 600px;
+    }
+
+    /* 회원가입 타이릍 */
+    .wrap .member_join_wrap .title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* 회원가입 양식 */
+    .wrap .member_join_wrap .member_join .join_frm {
+      display: grid;
+      grid-template-columns: 100px 500px;
+      /* grid-template-rows: minmax(30px,auto); */
+    }
+
+    /* 회원가입 버튼그룹 */
+    .wrap .member_join_wrap .btn_grp {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="member_join_wrap">
+      <div class="title">
+        <h2>회원가입</h2>
+      </div>
+      <div class="member_join">
+        <form action="" class="join_frm">
+          <div>
+            <label for="id">아이디</label>
+          </div>
+          <div>
+            <input type="text" id="id"> 
+            <input type="button" value="중복확인">
+          </div>
+          <div>
+            <label for="name">이름</label>
+          </div>
+          <div>
+            <input type="text" id="name">
+          </div>
+          <div>
+            <label for="gender">성별</label>
+          </div>
+          <div>
+            <input type="radio" name="gender" id="">남자
+            <input type="radio" name="gender" id="">여자
+          </div>
+          <div>
+            <label for="password">암호</label>
+          </div>
+          <div>
+            <input type="password" id="password">
+          </div>
+          <div>
+            <label for="pwcheck">암호확인</label>
+          </div>
+          <div>
+            <input type="password" id="pwcheck">
+            <span>* 같은 암호를 입력하세요</span>
+          </div>
+          <div>
+            <label for="mail">이메일</label>
+          </div>
+          <div>
+            <input type="text" id="mail">@<input type="text">
+            <select name="" id="">
+              <option value="">naver.com</option>
+              <option value="" selected>gmail.com</option>
+              <option value="">hotmail.com</option>
+            </select>
+          </div>
+          <div>
+            <label for="">주소</label>
+          </div>
+          <div>
+            <input type="text">
+            <input type="button" value="주소찾기">
+          </div>
+          <div>
+            <label for="mobile">휴대폰</label>
+          </div>
+          <div>
+            <div>
+              <input type="radio" name="mobile"><label for="">SKT</label>
+              <input type="radio" name="mobile"><label for="">KT</label>
+              <input type="radio" name="mobile"><label for="">LGU+</label>
+            </div>
+            <select name="" id="">
+              <option value="">010</option>
+              <option value="">011</option>
+              <option value="" selected>012</option>
+            </select>
+              <input type="text">-<input type="text">
+          </div>
+          <div>
+            <label for="">관심</label>
+          </div>
+          <div>
+            <input type="checkbox"><label for="">쇼핑</label>
+            <input type="checkbox"><label for="">게임</label>
+            <input type="checkbox"><label for="">여행</label>
+            <input type="checkbox"><label for="">기타</label>
+          </div>
+          <div>
+            <label for="intro">자기소개</label>
+          </div>
+          <div>
+            <textarea style="width:100%; height:100px;" id="intro"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="btn_grp">
+        <input type="button" value="확인">
+        <input type="button" value="다시입력">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

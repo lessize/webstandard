@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin:0 auto;
+      padding:0;
+      list-style: none;
+      text-decoration: none;
+      color: inherit;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    .wrap {
+      width: 800px;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+    .wrap .header h3 {
+      font-size: 30px;
+      line-height: 100px;
+    }
+    .wrap .formbox .list {
+      outline: 3px double #333;
+      width: 700px;
+    }
+    .wrap .formbox .list li:not(:last-child) {
+      border-bottom: 1px solid #333;
+    }
+    .wrap .formbox .list div label:first-child {
+      display: inline-block;
+      width: 100px;
+      border-right: 1px solid #333;
+      padding-left: 10px;
+      line-height: 50px;
+      font-weight: bold;
+    }
+    .wrap .formbox .list div input {
+      margin:0 10px;
+    }
+    .wrap .formbox .list .id button {
+      width: 80px;
+      background-color: lightgray;
+      border: 1px solid #111;
+      border-radius: 3px;
+      font-size: 15px;
+    }
+    .wrap .formbox .list .gender input {
+      margin-right: 0;
+    }
+    .wrap .formbox .list .reconfirm input {
+      margin-right: 0;
+    }
+    .wrap .formbox .list .mail input:nth-of-type(1) {
+      margin-right: 0;
+    }
+    .wrap .formbox .list .mail input:nth-of-type(2) {
+      width:100px;
+      margin: 0;
+    }
+    .wrap .formbox .list .mail span {
+      /* background-color: tomato; */
+      margin: 0;
+    }
+    .wrap .formbox .list .address button {
+      width: 80px;
+      background-color: lightgray;
+      border: 1px solid #111;
+      border-radius: 3px;
+      font-size: 15px;
+    }
+    /* .wrap .formbox .list .phone {
+      display: flex;
+    } */
+    .wrap .formbox .list .phone .phonewrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /* background-color: tomato; */
+      position: absolute;
+      top: 456px;
+      left: 227px;
+    }
+    .wrap .formbox .list .phone input {
+      margin-right: 0;
+    }
+    .wrap .formbox .list .phone .agency {
+      /* background-color: tomato; */
+      width: 250px;
+      height: 20px;
+    }
+    .wrap .formbox .list .phone .number {
+      padding: 0;
+      margin: 0;
+    }
+    .wrap .formbox .list .phone .number input {
+      width: 50px;
+      margin: 0;
+    }
+    .wrap .formbox .list .concern input {
+      margin-right: 0;;
+    }
+    .wrap .formbox .list .intoduce label {
+      height: 100%;
+      border: 0;
+    }
+    .wrap .formbox .list .intoduce textarea {
+      margin-top:20px;
+    }
+    .wrap .formbox .buttonwrap {
+      text-align: center;
+      padding: 10px 0;
+    }
+    .wrap .formbox .buttonwrap button:first-child {
+      margin-right:10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <h3>회원가입</h3>
+    </div>
+    <div class="formbox">
+      <ul class="list">
+        <li>
+          <div class="id">
+            <label for="id">아이디</label>
+            <input type="text">
+            <button>중복확인</button>
+          </div>
+        </li>
+        <li>
+          <div class="name">
+            <label for="name">이름</label>
+            <input type="text">
+          </div>
+        </li>
+        <li>
+          <div class="gender">
+            <label for="gender">성별</label>
+            <input type="radio" name="gender">
+            <label for="female">여자</label>
+            <input type="radio" name="gender">
+            <label for="male">남자</label>
+          </div>
+        </li>
+        <li>
+          <div class="pw">
+            <label for="pw">암호</label>
+            <input type="password">
+          </div>
+        </li>
+        <li>
+          <div class="reconfirm">
+            <label for="reconfirm">암호확인</label>
+            <input type="password">
+            <span>*같은 암호를 입력하세요.</span>
+          </div>
+        </li>
+        <li>
+          <div class="mail">
+            <label for="mail">이메일</label>
+            <input type="text">
+            <span>@</span>
+            <input type="text">
+            <select name="mail" id="mailadd">
+              <option value="naver">naver.com</option>
+              <option value="google">gmail.com</option>
+              <option value="icloud">icloud.com</option>
+            </select>
+          </div>
+        </li>
+        <li>
+          <div class="address">
+            <label for="address">주소</label>
+            <input type="text">
+            <button>주소찾기</button>
+          </div>
+        </li>
+        <li>
+          <div class="phone">
+            <label for="phone" class="labelphone">휴대폰</label>
+            <div class="phonewrap">
+              <div class="agency">
+                <input type="radio" name="checked">
+                <label for="skt">SKT</label>
+                <input type="radio" name="checked">
+                <label for="kt">KT</label>
+                <input type="radio" name="checked">
+                <label for="uplus">LG U+</label>
+              </div>
+              <div class="number">
+                <select name="phone" id="phonenumber">
+                  <option value="num1">010</option>
+                  <option value="num2">011</option>
+                  <option value="num3">012</option>
+                </select>
+                <span>-</span>
+                <input type="text">
+                <span>-</span>
+                <input type="text">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="concern">
+            <label for="concern">관심</label>
+            <input type="checkbox" name="shopping" id="shopping">
+            <label for="shop">쇼핑</label>
+            <input type="checkbox" name="game" id="game">
+            <label for="game">게임</label>
+            <input type="checkbox" name="travel" id="travel">
+            <label for="travel">여행</label>
+            <input type="checkbox" name="etc" id="etc">
+            <label for="etc">기타</label>
+          </div>
+        </li>
+        <li>
+          <div class="introduce">
+            <label for="intro">자기소개</label>
+            <textarea name="intro" id="intro" cols="10" rows="1"></textarea>
+          </div>
+        </li>
+      </ul>
+      <div class="buttonwrap">
+        <button>확인</button>
+        <button>다시입력</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

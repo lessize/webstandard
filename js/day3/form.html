@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3>Login</h3>
+  <form action="">
+    <div><label for="">ID</label><input id="id" type="text"></div>
+    <!-- <p>아이디를 입력하세요.</p> -->
+    <div><label for="">PW</label><input id="pw" type="password"></div>
+    <div><input id="btnLogin" type="button" value="Login"></div>
+    <!-- <div><button type="button">Login2</button></div> -->
+  </form>
+  <script>
+    const $id = document.getElementById('id');
+    console.log('id = ' + $id.value); 
+
+    const $btnLogin = document.getElementById('btnLogin');
+    const clickHandler = () => {
+      if($id.value.trim().length == 0) {
+        const $p = document.createElement('p'); // <p></p>
+        $p.textContent = '아이디를 입력하세요.'; // <p>아이디를 입력하세요.</p>
+        $p.style.margin = '0';
+        $p.style.fontSize = '0.8rem';
+        $p.style.color = 'red';
+        $p.style.fontWeight = 'bold';
+        const $form = document.querySelector('form');
+        
+        const $div = document.querySelector('form>div:nth-of-type(1)');
+        $div.insertAdjacentElement('afterend', $p);
+      }
+    }
+    $btnLogin.addEventListener('click', clickHandler);
+  </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      outline: 1px solid #333;
+      margin: 0 auto;
+      padding: 0;
+    }
+    :root {
+      --bg-color_1: #452c54;
+      --bg-color_2: #5f3c73;
+      --bg-color_3: #754a8e;
+      --bg-color_4: #8b58a9;
+      --bg-color_5: #9d73b7;
+      --bg-color_6: #af8cc4;
+    }
+
+    .wrap .container {
+      display: grid;
+      grid-template-columns: 800px;
+      /* grid-template-rows: 50px; */
+      grid-template-areas: 
+      "umh-wrap umh-wrap umh-wrap"
+      "hdr-wrap hdr-wrap hdr-wrap"
+      "gnb-wrap gnb-wrap gnb-wrap"
+      "main-wrap main-wrap main-wrap"
+      "footer_menu-wrap footer_menu-wrap footer_menu-wrap"
+      "footer-wrap footer-wrap footer-wrap"
+      ;
+    }
+    .wrap .container .container-item {
+      width: 800px;
+      height:50px;
+    }
+
+    /* uppermost */
+    .wrap .umh-wrap {
+      grid-area: umh-wrap;
+      justify-content: center;
+      background-color: var(--bg-color_1);
+    }
+    .wrap .umh-wrap .umh {
+      background-color: var(--bg-color_2);
+      display: grid;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* header */
+    .wrap .hdr-wrap {
+      grid-area: hdr-wrap;
+      justify-content: center;
+      background-color: var(--bg-color_2);
+    }
+    .wrap .hdr-wrap .hdr {
+      height: 100px;
+      background-color: var(--bg-color_3);
+      display: grid;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* gnb */
+    .wrap .gnb-wrap {
+      grid-area: gnb-wrap;
+      justify-content: center;
+      background-color: var(--bg-color_3);
+    }
+    .wrap .gnb-wrap .gnb {
+      background-color: var(--bg-color_4);
+      display: grid;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* main */
+    .wrap .main-wrap {
+      grid-area: main-wrap;
+      justify-content: center;
+      background-color: lightslategray;
+      height: 250px;
+    }
+    .wrap .main-wrap .main {
+      height:100%;
+      display: grid;
+      justify-content: stretch;
+      align-items: stretch;
+      grid-area:
+      "content sidebanner sidemenu"
+      ;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 100%;
+      padding: 0;
+    }
+    .wrap .main-wrap .main .main-item {
+      height: 100%;
+      height: 250px;
+      display: grid;
+    }
+    .wrap .main-wrap .main .content {
+      background-color: darkgreen;
+      width:100%;
+      justify-content: center;
+      align-items: center;
+    }
+    .wrap .main-wrap .main .sb {
+      background-color: darkolivegreen;
+      width:100%;
+      justify-content: center;
+      align-items: center;
+    }
+    .wrap .main-wrap .main .sm {
+      background-color: rgb(135, 161, 90);
+      width:100%;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* footer menu */
+    .wrap .footer_menu-wrap {
+      grid-area: footer_menu-wrap;
+      justify-content: center;
+      background-color: var(--bg-color_4);
+    }
+    .wrap .footer_menu-wrap .footer_menu {
+      background-color: var(--bg-color_5);
+      display: grid;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* footer */
+    .wrap .footer-wrap {
+      grid-area: footer-wrap;
+      justify-content: center;
+      background-color: var(--bg-color_5);
+    }
+    .wrap .footer-wrap .footer {
+      height: 70px;
+      background-color: var(--bg-color_6);
+      display: grid;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="container umh-wrap">
+      <div class="container-item umh">Uppermost Menu</div>
+    </div>
+    <div class="container hdr-wrap">
+      <div class="container-item hdr">header</div>
+    </div>
+    <div class="container gnb-wrap">
+      <div class="container-item gnb">gnb</div>
+    </div>
+    <div class="container main-wrap">
+      <div class="container-item main">
+        <div class="main-item content">Content</div>
+        <div class="main-item sb">Sidebanner</div>
+        <div class="main-item sm">Sidemenu</div>
+      </div>
+    </div>
+    <div class="container footer_menu-wrap">
+      <div class="container-item footer_menu">Footer Menu</div>
+    </div>
+    <div class="container footer-wrap">
+      <div class="container-item footer">Footer</div>
+    </div>
+  </div>
+</body>
+</html>

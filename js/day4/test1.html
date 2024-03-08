@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input id="result" type="text" disabled>
+  <button>1</button>
+  <button>2</button>
+  <button>+</button>
+  <p>결과</p>
+  <script>
+    console.log(window.eval('1+1'));
+    const $btns = document.querySelectorAll('button');
+    const $result = document.getElementById('result');
+    $btns.forEach(ele => {
+      ele.addEventListener('click', evt => {
+        console.log(evt.target.textContent);
+        $result.value += evt.target.textContent;
+      })
+    });
+
+    document.querySelector('p').addEventListener('click', evt => {
+      if($result.value){
+        $result.value = window.eval($result.value);
+      }   
+    });
+  </script>
+</body>
+</html>

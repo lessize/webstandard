@@ -1,0 +1,42 @@
+<!-- 문제 3)
+html 문서에는 여러 개의 이미지가 있습니다.
+팀원들은 각자 이미지를 클릭하면 헤당 이미지가 회전하도록 자바스크립트를 작성해야 합니다.
+첫번째 팀원은 90도,
+두번째 팀원은 180도,
+세번째 팀원은 270도로 이미지를 회전시켜야 합니다. 
+단, 선택한 이미지만 회전시켜야 합니다.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img.rotate {
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <img src="https://picsum.photos/100/100" alt="">
+    <img src="https://picsum.photos/100/100" alt="">
+    <img src="https://picsum.photos/100/100" alt="">
+  </div>
+  <script>
+    // const $wrap = document.querySelector('wrap');
+    // $wrap.addEventListener('click', evt => {
+    //   evt.target.classList.toggle('rotate');
+    // });
+
+    ele.classList.add('rotate'); 
+    Array.from($wrap.children).forEach(ele => {
+      ele.classList.add('rotate'); 
+      if(ele != evt.target) {
+        ele.classList.remove('rotate');
+      }
+    });
+  </script>
+</body>
+</html>

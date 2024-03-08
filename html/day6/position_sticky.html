@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h3 {
+      text-align: center;
+      padding:10px 0px;
+    }
+    html,body{
+      width:100%;
+    }
+    .gnb{
+      height: 100px;
+      background-color: yellow;
+      position: fixed;
+      top:0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .content1 {
+      height:500px;
+      background-color: pink;
+    }
+    .content2 {
+      height:3000px;
+      background-color: lightblue;
+    }
+    .content3 {
+      height:3000px;
+      background-color: lightcoral;
+    }
+    .sticky-header{
+      position:sticky;
+      top:100px;
+      margin-left:calc(100vw - 100px);
+      width:100px;
+      height:300px;
+      background-color: orangered;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <h3>스크롤 다운</h3>
+  <div class="gnb">메뉴</div>
+  <div class="content1"></div>
+  <div class="sticky-header">
+    광고문구
+  </div>
+  <div class="content2"></div>
+  <div class="content3"></div>
+</body>
+</html>

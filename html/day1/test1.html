@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        b {
+            background-color: tomato;
+        }
+        a {
+            text-decoration: none;
+            color: green;
+        }
+        button {
+            width: 50px;
+            height: 50px;
+            background-color: tomato;
+            color: white;
+            border: none;
+            border-radius: 50%;
+        }
+        button:hover {
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <p>반갑습니다. <b>홍길동님!</b></p>
+    <button><a href="#">click</a></button>
+    <script>
+        const $btn = document.querySelector('button')
+        $btn.addEventListener('click', (e)=>{
+            $btn.style.backgroundColor = 'bisque'
+        })
+    </script>
+    <a href="http://www.naver.com" target="_top">naver</a>
+    <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi nulla labore blanditiis temporibus quasi nam unde adipisci suscipit atque exercitationem? Reiciendis vel perferendis non officiis quibusdam libero facilis sequi expedita?
+        Exercitationem officiis nam inventore nostrum a sapiente! Est, aperiam necessitatibus ratione eveniet optio possimus voluptates facilis autem provident vel mollitia eligendi ducimus assumenda earum, a similique minima tempore architecto quidem?
+</body>
+</html>
