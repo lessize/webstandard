@@ -1,0 +1,61 @@
+<!-- 양식에 버튼 2개를 포함하여 각각의 버튼 클릭시
+  '버튼1 클릭' '버튼2 클릭' 메세지를 콘솔에 출력하기 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #frm1, #frm2 {
+      outline: 1px solid tomato;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <!-- <div class="wrap">
+    <button id="btn1">버튼1</button>
+    <button id="btn2">버튼2</button>
+  </div> -->
+  
+  <form id="frm1" action="">
+    <button id="btn1" type="button">버튼1</button>
+    <button id="btn2" type="button">버튼2</button>
+  </form>
+  <form id="frm2" action="">
+    <button id="btn3" type="button">버튼3</button>
+    <button id="btn4" type="button">버튼4</button>
+  </form>
+
+  <script>
+    // const $btn1 = document.getElementById('btn1');
+    // $btn1.addEventListener('click', () => {
+    //   console.log('버튼1을 클릭했습니다.')
+    // });
+    // const $btn2 = document.getElementById('btn2');
+    // $btn2.addEventListener('click', () => {
+    //   console.log('버튼2을 클릭했습니다.')
+    // });
+
+    const $btn1 = document.getElementById('btn1');
+    const $btn2 = document.getElementById('btn2');
+    $btn1.addEventListener('click', evt => {
+      console.log(`${evt.target.textContent} 클릭`);
+    }, false);
+    $btn2.addEventListener('click', evt => {
+      console.log(`${evt.target.textContent} 클릭`);
+    }, false);
+
+    // -----------------------------------------------
+    const $frm2 = document.getElementById('frm2');
+    $frm2.addEventListener('click', evt => {
+      if(evt.target.nodeName != 'BUTTON') return;
+      // console.log(evt.target); // 이벤트가 발생한 요소
+      // console.log(evt.currentTarget); // 이벤트 리스너를 등록한 요소
+      // if(evt.target.id != 'btn3' && evt.target.id != 'btn4') return;
+      console.log(`${evt.target.textContent} click`);
+    }, false);
+  </script>
+</body>
+</html>

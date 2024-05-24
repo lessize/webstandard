@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      /* outline: 1px solid #333; */
+      margin: 0;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 100px 1fr 100px;
+      grid-template-rows: 250px 50px auto 20px 70px;
+      grid-template-areas: 
+        "header header header"
+        "gnb    gnb    gnb"
+        "side-a main   side-b"
+        " .      .      .     "
+        "footer footer footer"
+        ;
+    }
+    header {
+      grid-area: header;
+      background-image: url("https://cdn.pixabay.com/photo/2016/03/26/13/09/cup-of-coffee-1280537_1280.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    nav { 
+      grid-area: gnb;
+    }
+    nav ul {
+      display: flex;
+      justify-content: flex-end;
+      list-style: none;
+      padding: 0;
+      background-color: #333;
+    }
+    nav ul li {
+      margin-left:30px;
+      color: #aaa;
+    }
+    nav ul li a {
+      text-decoration: none;
+      padding: 0 10px;
+      background-color: #333;
+      color: inherit;
+    }
+    nav ul li a:hover {
+      background-color: #222;
+      color: #ccc;
+    }
+    aside.left {
+      grid-area:side-a;
+    }
+    aside.right {
+      grid-area:side-b;
+    }
+    main {
+      grid-area: main;
+      background-color: antiquewhite;
+    }
+    /* main:hover {
+      z-index: 1;
+      transform:scale(1.2);
+      transition: transform ease .5s 0s;
+    } */
+    footer {
+      grid-area: footer;
+    }
+    body {
+      background-color: lightyellow;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>header</header>
+    <nav>
+      <ul>
+        <li><a href="http://www.naver.com">NAVER</a></li>
+        <li><a href="http://www.google.com">Google</a></li>
+        <li><a href="#">etc</a></li>
+      </ul>
+    </nav>
+    <aside class="left">aside</aside>
+    <main>main
+      <section class="se1">
+        <h2>sec01</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis doloribus nobis, sequi asperiores quos impedit omnis iste ratione. Doloremque similique a perspiciatis at itaque obcaecati ducimus nam tempora, temporibus adipisci?
+        Beatae aperiam minus repellendus perferendis et natus expedita dolorem vel quam. Repellendus fuga exercitationem, amet doloremque beatae placeat sit quo cupiditate eos voluptas, inventore temporibus aliquam nostrum quaerat. Pariatur, possimus?
+        Eaque nemo laboriosam consequuntur, amet voluptatem, laborum animi quos aperiam commodi vero praesentium quidem repudiandae magni veniam incidunt ea autem dolorem debitis aut similique. Vero dignissimos unde ratione placeat expedita.</p>
+      </section>
+      <section class="se2">
+        <h2>sec02</h2>
+        <ul>
+          <li>list1</li>
+          <li>list2</li>
+          <li>list3</li>
+        </ul>
+      </section>
+      <section class="se3">
+        <h2>sec03</h2>
+        <form action="">
+          <label for="">emailing</label>
+          <input type="text" name="" id="">
+        </form>
+      </section>
+    </main>
+    <aside class="right">aside</aside>
+    <footer>
+      <p>KH인재교육원</p>
+    </footer>
+  </div>
+</body>
+</html>

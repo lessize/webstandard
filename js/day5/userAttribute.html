@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 사용자 정의 속성 -->
+  <!-- 'data-'로 시작해야하며 이후 케밥 켕스로 속성명을 작성한다. -->
+  <div id="user" data-id="123" data-user-name="홍길동" data-user-age="30">홍길동</div>
+  <script>
+    // 사용자 정의 속성에 접근할 때는 element.dataset.로 접근하여 케멀 케이스로 지정 
+    const $user = document.getElementById('user');
+    const id = $user.dataset.id;
+    const name = $user.dataset.userName;
+    const age = $user.dataset.userAge;
+    console.log(id, name, age);
+
+    $user.addEventListener('click', evt => {
+      $user.dataset.userAge = parseInt($user.dataset.userAge) + 1;
+      console.log(`${name}-${$user.dataset.userAge}님 반갑습니다.`);
+      $user.style.backgroundColor = `rgb(${parseInt($user.dataset.userAge)*5}, ${parseInt($user.dataset.userAge)*10}, ${parseInt($user.dataset.userAge)*20})`
+    });
+  </script>
+</body>
+</html>

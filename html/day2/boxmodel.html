@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* id > class > element 
+           구체적으로 표현한 선택자의 우선 순위가 더 높다 
+           class : 복수의 값을 가질 수 있다. (id는 불가능) */
+        p {
+            background-color: antiquewhite;
+        }
+        .g2 {
+            background-color: cadetblue;
+        }
+        #key {
+            background-color: aliceblue;
+        }
+        p.g2 {
+            background-color: cornflowerblue;
+        }
+        p#key {
+            background-color: lightgray;
+        }
+        #key.g2 {
+            background-color: khaki;
+        }
+        p#key.g2 {
+            background-color: steelblue;
+        }
+    </style>
+</head>
+<body>
+    <!-- <P>반갑습니다^_^</P>
+    <ul class="g1">
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+    </ul>
+    <p class="g1">반갑습니다!</p>
+    <p class="g2">반갑습니다!</p> -->
+    <p id="key" class="g2">반갑습니다!</p>
+    <p id="key" class="g3">반갑습니다!</p>
+
+    <script>
+        const $ps = document.querySelectorAll('p')
+        $ps.forEach(ele=>ele.style.backgroundColor = 'tomato');
+    </script>
+</body>
+</html>

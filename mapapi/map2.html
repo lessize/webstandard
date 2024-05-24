@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body, h3 {
+      margin: 0;
+    }
+    #title {
+      background-color: #333;
+      color: #fff;
+      font-weight: bold;
+      margin: 0;
+      text-align: center;
+    }
+    #search {
+      position: absolute;
+      z-index: 1;
+      top: 50px;
+      left: 10px;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid rgba(0, 0, 0, .2);
+    }
+    #search label[for='keyword'] {
+      margin-right: 5px;
+    }
+    #keyword {
+      /* border: none; */
+      outline: none;
+    }
+    #selCate {
+      position: absolute;
+      z-index: 1;
+      top: 25px;
+      left: 10px;
+    }
+    .infowindow {
+      padding:5px;
+      font-size: 0.7rem;
+    }
+  </style>
+  <!-- 네이버 지도 api 가져오기 -->
+  <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=7j7cybl2r5"></script>
+  <!-- 카카오 지도 api 가져오기 -->
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2fa978001ecb39793631b8108597af32&libraries=services,clusterer,drawing"></script>
+</head>
+<body>
+  <div id="title"><h3>지도</h3></div>
+  <div id="map" style="width:100vw;height:100vh;"></div>
+  <div id="selCate">
+    <select name="cate" id="cate">
+      <option value="ALL">전체</option>
+      <option value="MT1">대형마트</option>
+      <option value="CS2">편의점</option>
+      <option value="PS3">어린이집, 유치원</option>
+      <option value="SC4">학교</option>
+      <option value="AC5">학원</option>
+      <option value="PK6">주차장</option>
+      <option value="OL7">주유소, 충전소</option>
+      <option value="SW8">지하철역</option>
+      <option value="BK9">은행</option>
+      <option value="CT1">문화시설</option>
+      <option value="AG2">중개업소</option>
+      <option value="PO3">공공기관</option>
+      <option value="AT4">관광명소</option>
+      <option value="AD5">숙박</option>
+      <option value="FD6">음식점</option>
+      <option value="CE7">카페</option>
+      <option value="HP8">병원</option>
+      <option value="PM9">약국</option>
+    </select>
+  </div>
+  <div id="search">
+    <label for="keyword">검색어</label>
+    <input type="text" id="keyword">
+  </div>
+
+  <script>
+    let map = null;         //지도
+    const markers = [];     //마커
+    const infowindows = []; //정보창
+
+    // 장소 검색 객체를 생성합니다
+    const ps = new kakao.maps.services.Places();  
+
+    function getLocation(){
+      return new Promise((resolve, reject)=>{
+        if(!navigator.geolocation){
+          reject(new Error('Geolocation 이 브라우저에서 지원되지 않음!'))
+        }else{
+          navigator.geolocation.getCurrentPosition(resolve,reject)
+        }
+      });
+    }
+
+    async function fetchLocation(){
+      try{
+        const position = await getLocation();
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        console.log(`위도:${lat}, 경도:${lng}`);
+        
+        window.mylat = lat;
+        window.mylng = lng;
+
+        // 지도
+        makeMap(lat,lng);
+      }catch(err){
+        console.error(`오류: ${error.message}`)
+      }  
+
+    }
+    window.addEventListener('load',fetchLocation);
+
+    // 초기 지도생성
+    function makeMap(lat,lng){
+      map = new naver.maps.Map('map', {
+          center: new naver.maps.LatLng(lat, lng),
+          zoom: 16
+      });
+
+      // 내위치 마커
+      const marker = new naver.maps.Marker({
+          position: new naver.maps.LatLng(lat, lng),
+          map: map,
+          icon: {
+              url: './me.png',
+              size: new naver.maps.Size(100, 150),
+              origin: new naver.maps.Point(0, 0),
+              anchor: new naver.maps.Point(11, 35)
+          }
+      });
+    } 
+
+
+    // 키워드 검색을 요청하는 함수입니다
+    function searchPlaces() {
+
+        var keyword = document.getElementById('keyword').value;
+
+        if (!keyword.replace(/^\s+|\s+$/g, '')) {
+            alert('키워드를 입력해주세요!');
+            return false;
+        }
+
+        // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+        // ps.keywordSearch( keyword, placesSearchCB); 
+    }    
+
+    const $cate = document.getElementById('cate');
+    const $keyword = document.getElementById('keyword');
+
+    $keyword.addEventListener('keyup',evt=>{
+      if(evt.key === 'Enter'){
+        evt.preventDefault();
+        searchKeyword($cate.value , $keyword.value)
+        $keyword.value = '';
+
+        //기존 마커 지도에서 제거
+        hideMarkers();
+      }
+    });
+
+    function searchKeyword(cate, keyword){
+      console.log(`검색중 : ${keyword}` );
+      
+      cate = cate === 'ALL' ? null: cate;
+      // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+      const options={
+        category_group_code : cate,
+        location : new kakao.maps.LatLng(window.mylat, window.mylng),
+        radius : 20000     // 5000~20000 단위(m)
+      }
+      ps.keywordSearch( keyword, placesSearchCB, options); 
+    }
+
+    // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+    function placesSearchCB(data, status, pagination) {
+        if (status === kakao.maps.services.Status.OK) {
+
+            console.log(data);
+            console.log(pagination);
+
+            // 정상적으로 검색이 완료됐으면
+            // 검색 목록과 마커를 표출합니다
+            displayPlaces(data);
+
+            // // 페이지 번호를 표출합니다
+            // displayPagination(pagination);
+
+        } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+
+            alert('검색 결과가 존재하지 않습니다.');
+            return;
+
+        } else if (status === kakao.maps.services.Status.ERROR) {
+
+            alert('검색 결과 중 오류가 발생했습니다.');
+            return;
+
+        }
+    }
+
+    // 마커 표시
+    function displayPlaces(places) {
+
+      //배열 요소 지우기
+      markers.splice(0,markers.length);
+      infowindows.splice(0,markers.length);
+
+      // 검색결과 좌표 영역 자동 계산
+      const bounds = new naver.maps.LatLngBounds();
+
+      //1) 마커-인포창 생성
+      places.forEach(place=>{
+
+        // 마커
+        const marker = new naver.maps.Marker({
+          position: new naver.maps.LatLng(place.y, place.x),
+          map: map
+        });
+
+        markers.push(marker)
+        bounds.extend(marker.getPosition())
+
+        // 정보창
+        const contentString = [
+          `<div class='infowindow'>`,
+          `<div>상호명:${place.place_name}</div>`,
+          `<div>카테고리:${place.category_name}</div>`,
+          `<div>연락처:${place.phone}</div>`,
+          `<div>도로명주소:${place.road_address_name}</div>`,
+          `<div>홈페이지:<a href='${place.place_url}' target='_blank'>${place.place_url}</a></div>`,
+          `</div>`
+        ].join('');
+        
+        const infowindow = new naver.maps.InfoWindow({
+            content: contentString
+        });
+
+        infowindows.push(infowindow);
+
+        naver.maps.Event.addListener(marker, "mouseover", function(e) {
+            if (infowindow.getMap()) {
+                infowindow.close();
+            } else {
+                infowindow.open(map, marker);
+            }
+        });        
+
+      })
+
+      //2) 마커표시
+      markers.forEach(marker=>marker.setMap(map));
+
+      //3) 모든 마커를 포함하도록 지도 범위 조정
+      map.fitBounds(bounds); //자동으로 적당한 줌 레벨을 계산
+
+      //4) 정보창생성 (상호명,카테고리,연락처..)
+      places.forEach(places=>{
+
+      })
+
+
+
+    }
+
+    // 지도에서 마커 제거
+    function hideMarkers(){
+      markers.forEach(marker=>marker.setMap(null))
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrap {
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            width: 100vw;
+            padding-top: 100px;
+        }
+        #wrap div {
+            margin-bottom: 10px;
+        }
+        form {
+            border: 1px solid #333;
+            padding: 20px;
+            background-color: lightcyan;
+            border-radius: 5%;
+            box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <h3>회원 가입</h3>
+        <form action="">
+            <div>
+                <label for="">ID</label>
+                <input type="text">
+            </div>
+            <div>
+                <label for="">PW</label>
+                <input type="password">
+            </div>
+            <div>
+                <label for="">취미</label>
+                <input type="checkbox"><label for="">등산</label>
+                <input type="checkbox"><label for="">수영</label>
+                <input type="checkbox"><label for="">골프</label>
+            </div>
+            <div>
+                <label for="">성별</label>
+                <input type="radio" name="gender"><label for="">남자</label>
+                <input type="radio" name="gender"><label for="">여자</label>
+            </div>
+            <div>
+                <label for="">지역</label>
+                <select name="" id="">
+                    <option value="">==선택==</option>
+                    <option value="">서울</option>
+                    <option value="">부산</option>
+                    <option value="">울산</option>   
+                </select>
+            </div>
+            <div>
+                <label for="">연락처</label>
+                <input type="tel">
+            </div>
+            <div>
+                <label for="">생일</label>
+                <input type="date">
+            </div>
+            <div>
+                <label for="">출생시</label>
+                <input type="time">
+            </div>
+            <div>
+                <label for="">선호 색상</label>
+                <input type="color">
+            </div>
+            <div>
+                <label for="">범위</label>
+                <input type="range">
+            </div>
+            <div>
+                <label for="">나이</label>
+                <input type="number" min="1" max="100">
+            </div>
+            <div>
+                <input type="submit" value="가입">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

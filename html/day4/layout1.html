@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex layout</title>
+  <style>
+    * {
+      /* outline: 1px solid #333; */
+      margin: 0 auto;
+    }
+    :root {
+      --bg-color_1: #452c54;
+      --bg-color_2: #5f3c73;
+      --bg-color_3: #754a8e;
+      --bg-color_4: #8b58a9;
+      --bg-color_5: #9d73b7;
+      --bg-color_6: #af8cc4;
+    }
+    .wrap .container {
+      display: flex;
+      justify-content: center;
+    }
+    .wrap .container .container-item {
+      width: 800px;
+      /* background-color: antiquewhite; */
+    }
+
+    /* uppermost menu */
+    .wrap .container.umh-wrap {
+      height: 50px;
+      background-color: var(--bg-color_1);
+    }
+    .wrap .container.umh-wrap .ump {
+      height: 50px;
+      background-color: var(--bg-color_2);
+    }
+
+    /* header menu */
+    .wrap .container.hdr-wrap {
+      height: 100px;
+      background-color: var(--bg-color_2);
+    }
+    .wrap .container.hdr-wrap .hdr {
+      background-color: var(--bg-color_3);
+    }
+
+    /* gnb menu */
+    .wrap .container.gnb-wrap {
+      height: 50px;
+      background-color: var(--bg-color_3);
+    }
+    .wrap .container.gnb-wrap .gnb {
+      background-color: var(--bg-color_4);
+    }
+
+    /* main */
+    .wrap .container.main-wrap {
+      height: 250px;
+      background-color: lightcyan;
+    }
+    .wrap .container .container-item{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .wrap .container .container-item.main {
+      display: flex;
+      align-items: stretch;
+      border: 10px solid #333;
+      box-sizing: border-box;
+    }
+    .wrap .container .container-item.main .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 2;  /* flex: 2 2 auto; */
+      background-color: darkolivegreen;
+    }
+    .wrap .container .container-item.main .sb {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;  /* flex: 1 1 auto; */
+      background-color: slategray;
+    }
+    .wrap .container .container-item.main .sm {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;  /* flex: 1 1 auto; */
+      background-color: rgb(135, 161, 90);
+    }
+
+    /* footer menu */
+    .wrap .container.footer_menu-wrap {
+      height: 50px;
+      background-color: var(--bg-color_4);
+    }
+    .wrap .container.footer_menu-wrap .footer_menu {
+      background-color: var(--bg-color_5);
+    }
+
+    /* footer */
+    .wrap .container.footer-wrap {
+      height: 100px;
+      background-color: var(--bg-color_5);
+    }
+    .wrap .container.footer-wrap .footer {
+      background-color: var(--bg-color_6);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="container umh-wrap">
+      <div class="container-item umh">Uppermost Menu</div>
+    </div>
+    <div class="container hdr-wrap">
+      <div class="container-item hdr">header</div>
+    </div>
+    <div class="container gnb-wrap">
+      <div class="container-item gnb">gnb</div>
+    </div>
+    <div class="container main-wrap">
+      <div class="container-item main">
+        <div class="content">Content</div>
+        <div class="sb">Sidebanner</div>
+        <div class="sm">Sidemenu</div>
+      </div>
+    </div>
+    <div class="container footer_menu-wrap">
+      <div class="container-item footer_menu">Footer Menu</div>
+    </div>
+    <div class="container footer-wrap">
+      <div class="container-item footer">Footer</div>
+    </div>
+  </div>
+</body>
+</html>

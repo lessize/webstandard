@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>새 문서</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" alt="favicon">
+    <!--external 방식 CSS-->]
+    <link rel="stylesheet" href="test2.css">
+    <!--인터널internel 방식 CSS-->
+    <style>
+        * {
+            margin: 0 auto;
+        }
+        p {
+            background-color: lightgray;
+        }
+        p b {
+            background-color: bisque;
+        }
+        a {
+            text-decoration: none; 
+        }
+        table {
+            margin-bottom: 50px;
+        }
+        table, th, td {
+            width: 300px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+            padding : 10px; 
+            text-align: center;
+            
+        }
+        table th {
+            background-color: tomato;
+            line-height:50px;
+        }
+
+        .g1 {
+            background-color: burlywood;
+            line-height: 70px;
+            text-align: center;
+            width: 200px;
+            list-style: none;
+            padding: 0;
+            margin-bottom: 50px;
+        }
+        iframe {
+            width:500px;
+            height: 330px;
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <p>반갑습니다. <b>홍길동님.</b></p>
+
+    <!--인라인inline 방식 CSS-->
+    <p style="background-color: salmon;">오늘은 목요일입니다.</p>
+    <p class="c1">내일은 금요일입니다.</p>
+    <!--taget="blank" > 새 창으로 링크 열기-->
+    <a href="http://www.naver.com" target="blank">naver</a>
+    <div></div>
+    <!-- 상대 경로 : 현재 위치를 기준으로 경로를 찾음-->
+    <!-- .(점1) : 현재 위치(생략 가능), ..(점2) : 상위 폴더-->
+    <img src="images/waves.jpg" alt="파도">
+    <img src="./images/waves.jpg" alt="파도">
+    <img src="../day1/images/waves.jpg" alt="파도">
+
+    <!-- 절대 경로 : 최상위 폴더 위치를 기준으로 경로를 찾음-->
+    <img src="/day1/images/waves.jpg" alt="파도">
+
+    <div></div>
+
+    <a href="/html/hello.html">hello</a>
+
+    <table>
+        <tr>
+            <th>name</th>
+            <th colspan="2">height/weight</th>
+        </tr>
+        <tr>
+            <td>Allen</td>
+            <td>70</td>
+            <td>170</td>
+        </tr>
+        <tr>
+            <td>Bill</td>
+            <td>50</td>
+            <td>160</td>
+        </tr>
+    </table>
+
+    <iframe src="test1.html" frameborder="1"></iframe>
+
+    <div>
+    <h2>간식</h2>
+        <ul>
+            <h3>점심 간식</h3>
+            <li>item2</li>
+            <li>item3</li>
+            <li>item4</li>
+            <h4>야참</h4>
+            <ul>
+                <li>item1</li>
+                <li>item2</li>
+            </ul>
+        </ul>
+    </div>
+    
+    <p class="g1">p1</p>
+    <p class="g1">p2</p>
+
+    <ul class="g1">
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+    </ul>
+</body>
+</html>

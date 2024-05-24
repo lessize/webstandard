@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      color: inherit;
+      font-size: 16px;
+      /* outline: 1px solid #333; */
+    }
+    .menu {
+      display: flex;
+      justify-content: center;
+      height: 50px;
+      background-color: #555;
+      color: #fff;
+    }
+    .menu .menu_item {
+      /* flex-grow: 1;
+      flex-shrink: 1; */
+      height: 100%;
+    }
+    .menu .menu_item a {
+      padding: 0 20px;
+      line-height: 50px;
+    }
+    .menu .menu_item:hover {
+      background-color: #222;
+    }
+    .menu .menu_item a:hover {
+      color: #aaa;
+      text-decoration: underline;
+    }
+    .menu .menu_item a:hover::before {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #aaa;
+      position: relative;
+      top: 0;
+      left: -8px;
+      content: " ";
+    }
+  </style>
+</head>
+<body>
+  <ul class="menu">
+    <li class="menu_item menu_item1"><a href="http://www.naver.com">NAVER</a></li>
+    <li class="menu_item menu_item2"><a href="layout1.html">FLEX MENU</a></li>
+    <li class="menu_item menu_item3"><a href="layout3.html">GRID MENU</a></li>
+    <li class="menu_item menu_item4"><a href="#">menu4</a></li>
+    <li class="menu_item menu_item5"><a href="#">menu5</a></li>
+  </ul>
+</body>
+</html>

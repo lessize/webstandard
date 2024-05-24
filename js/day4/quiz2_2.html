@@ -1,0 +1,52 @@
+<!-- 문제 2)
+HTML 문서에는 여러개의 리스트 아이템이 있습니다.
+각 리스트 아이템을 클릭하면 해당 아이템의 배경색이 노란색으로 변경되도록 자바스크립트를 작성하세요.
+단, 클릭한 아이템만 노란색으로 변경되어야 하고 다른 아이템은 기본 배경색을 유지해야 합니다. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap .item.on {
+      background-color: lightyellow;
+    }
+  </style>
+</head>
+<body>
+  <ul class="wrap">
+    <li class="item">list1</li>
+    <li class="item">list2</li>
+    <li class="item">list3</li>
+  </ul>
+  <script>
+    const $wrap = document.querySelector('.wrap');
+    const $lis = document.querySelectorAll('.wrap .item');
+    console.log($lis);
+    $wrap.addEventListener('click', evt => {
+      // console.log(evt.target.className); // 클래스값을 문자열로 읽어오기 "item on"
+      // evt.target.className = evt.target.className.replace('on', '').trim();
+
+      // evt.target.classList.add('test'); // classList : 클래스 값을 배열로 반환 DOMTokenList[item, on]
+      // evt.target.classList.remove('test');
+      // evt.target.classList.replace('on', 'off'); 
+      // evt.target.classList.toggle('on'); 
+      // console.log(evt.target.classList.contains('on')); // 요소가 있는지 boolean값으로 반환
+
+      // 모든 요소의 클래스값 'on' 제거 후 클릭한 요소만 'on' 추가
+      // $lis.forEach(ele => ele.target.classList.remove('on'));
+      // evt.target.classList.add('on');
+
+      // 이벤트 소스만 클래스값 'on' 추가 그 외 요소는 클래스값 'on' 제거
+      $lis.forEach(ele => {
+        if(evt.target == ele){
+          ele.classList.add('on');
+        } else {
+          ele.classList.remove('on');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

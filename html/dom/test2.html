@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <textarea name="" id="" cols="30" rows="3"></textarea>
+  <button class="addBtn">등록</button>
+  <ul class="list">
+    <li class="item item1">내용1 <button class="updateBtn">수정</button><button class="deleteBtn">삭제</button></li>
+    <li class="item item2">내용2 <button class="updateBtn">수정</button><button class="deleteBtn">삭제</button></li>
+    <li class="item item3">내용3 <button class="updateBtn">수정</button><button class="deleteBtn">삭제</button></li>
+  </ul>
+  <script>
+    // 등록
+    const $addBtn = document.querySelector('.addBtn');
+    let itemCnt = 4;
+    $addBtn.addEventListener('click', evt => {
+      const $li_new = document.createElement('li');
+      $li_new.innerHTML = `${document.querySelector('textarea').value}
+                           <button class="updateBtn">수정</button><button class="deleteBtn">삭제</button>`;
+      $li_new.classList.add('item', `item${itemCnt}`);
+      itemCnt++;
+      document.querySelector('ul').insertAdjacentElement('beforeEnd', $li_new);
+    });
+
+    // 수정
+    const $updates = document.querySelectorAll('.updateBtn');
+    $updates.forEach(btn => {
+      btn.addEventListener('click', evt => {
+        const $update_li = document.createElement('li');
+        evt.target.closest('.item').insertAdjacentElement('afterend', $update_li);
+        $update_li.setAttribute('class', `${evt.target.closest('.item').class}`);
+        $update_li.innerHTML = `<input type="text" value='${evt.target.closest('.item').firstChild.nodeValue}'>
+                                <button onclick='saveUpdate(this)'>저장</button>`;
+      }, {once: true});
+    });
+
+    function saveUpdate(button) {
+      const $input = button.previousElementSibling;
+      const newValue = $input.value;
+      const $item = button.parentElement.previousElementSibling;
+      $item.innerHTML = `${newValue}<button class="updateBtn">수정</button><button class="deleteBtn">삭제</button>`;
+      button.parentElement.remove();
+    }
+
+    // 삭제
+    const $deletes = document.querySelectorAll('.deleteBtn');
+    $deletes.forEach(btn => {
+      btn.addEventListener('click', evt => {
+        evt.target.closest('.item').remove();
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .msg { 
+      display: none; /* box model 제거 */
+      /* visibility: hidden; box model 유지 content만 숨김  */
+      font-size: 0.8rem;
+      color: red;
+      font-weight: bold;
+      margin: 0;
+    }
+    .on { 
+      display: block;
+    }
+    .off {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h3>Login</h3>
+  <form action="">
+    <div><label for="">ID</label><input id="id" type="text"></div>
+    <p class="msg">아이디를 입력하세요.</p>
+    <div><label for="">PW</label><input id="pw" type="password"></div>
+    <div><input id="btnLogin" type="button" value="Login"></div>
+    <!-- <div><button type="button">Login2</button></div> -->
+  </form>
+  <script>
+    const $btnLogin = document.getElementById('btnLogin');
+    $btnLogin.addEventListener('click', (evt) => {
+      console.log(evt);
+      console.log(evt.target); // 이벤트 소스
+      console.log(evt.currentTarget); // 이벤트 리스너가 등록된 요소
+      console.log(evt.screenX, evt.screenY); // 스크린 좌표
+      console.log(evt.type); // 이벤트 종류
+      const $id = document.getElementById('id');
+      if($id.value.trim().length == 0){
+        const $msg = document.querySelector('.msg');
+        $msg.textContent = '아이디를 입력하세요';
+        // $msg.style.display = 'block';
+        $msg.classList.add('on');
+      }
+    });
+
+    // $btnLogin.addEventListener('mouseover', (evt) => {
+    //   console.log(evt);
+    //   evt.target.style.backgroundColor = 'lightyellow';
+    // });
+
+    // $btnLogin.addEventListener('mouseleave', (evt) => {
+    //   console.log(evt);
+    //   evt.target.style.backgroundColor = 'initial';
+    // });
+
+    document.querySelector('html').addEventListener('click', (evt) => {
+      console.log('html의 버블링 단계에서 발생된 이벤트 객체' + evt);
+    }, false);
+
+    document.querySelector('html').addEventListener('click', (evt) => {
+      console.log('html의 캡쳐링 단계에서 발생된 이벤트 객체' + evt);
+    }, true);
+
+    const $pw = document.getElementById('pw');
+    $pw.addEventListener('keyup', (evt) => {
+      console.log(evt);
+      if(evt.key == 'Enter'){
+        console.log('Enter 키를 누르셨습니다.');
+      } else if(evt.key == 'a'){
+        console.log('a 키를 누르셨습니다.');
+      }
+
+      // 비밀번호가 3자리를 초과하는지 체크
+      if($pw.value.length > 3) {
+        console.log('비밀번호 길이가 3자리를 초과합니다.');
+        $pw.value = '';
+      }
+    });
+  
+  </script>
+</body>
+</html>
